@@ -43,4 +43,7 @@ public class InsulinDose {
 	public float getActualDose() {return this.actualDose;}
 	public String comments() {return this.comments;}
 	
+	//setters
+	public void setPatient(Patient patient) {this.patient=patient;}
+	
 }

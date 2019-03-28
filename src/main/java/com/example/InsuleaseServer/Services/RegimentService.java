@@ -1,7 +1,5 @@
 package com.example.InsuleaseServer.Services;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,31 +10,37 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.InsuleaseServer.Models.Patient;
 import com.example.InsuleaseServer.Models.Regiment;
-import com.example.InsuleaseServer.Models.User;
 import com.example.InsuleaseServer.Repositories.PatientRepository;
+import com.example.InsuleaseServer.Repositories.RegimentRepository;
 import com.example.InsuleaseServer.Repositories.UserRepository;
 
 @CrossOrigin(allowCredentials="true")
 @RestController
-public class PatientService {
+public class RegimentService {
 	@Autowired
 	PatientRepository patientRepository;
 	
 	@Autowired
+	RegimentRepository regimentRepository;
+	
+	@Autowired
 	UserRepository userRepository;
 	
-	@PostMapping("api/patient/register")
-	public Patient register(@RequestBody Patient newPatient, HttpSession session) {
-		System.out.println("register was called from PatientService with patient " + newPatient.toString());
-		patientRepository.save(newPatient);
-		session.setAttribute("currentUser", newPatient);
-		session.setAttribute("userType", "patient");
-		if (session.getAttribute("currentUser") == null) {
-			System.out.println("Registered patient failed to be set to currentUser");
-		}
-		return newPatient;
+	@GetMapping("/api/patient/{userId}/regiment")
+	public Regiment findRegiment(@PathVariable (value="userId") int userId) {
+		Patient patient = (Patient)userRepository.findById(userId).get();
+		return patient.getRegiment();
 	}
 	
-
+	@PostMapping("/api/patient/{userId}/regiment")
+	public Regiment assignRegiment(@PathVariable (value="userId") int userId, 
+			@RequestBody Regiment newRegiment) {
+		regimentRepository.save(newRegiment);
+		Patient patient = (Patient)userRepository.findById(userId).get();
+		patient.setRegiment(newRegiment);
+		patientRepository.save(patient);
+		return newRegiment;
+	}
+	
 
 }

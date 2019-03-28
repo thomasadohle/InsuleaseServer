@@ -58,4 +58,6 @@ public class Patient extends User{
 		}
 		return this.insulinDoses;
 	}
+	
+	
 }

@@ -22,7 +22,7 @@ public class UserService {
 	@Autowired
 	UserRepository userRepository;
 	
-	
+	@PostMapping("api/login")
 	public User login(	@RequestBody User credentials,
 	HttpSession session) {
 		System.out.println("attempting to log in user with un: " +credentials.getUsername() + " and pw: " + credentials.getPassword());
