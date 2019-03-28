@@ -32,4 +32,7 @@ public class Recipe {
 	public int getCalories() {return this.calories;}
 	public int getCarbs() {return this.carbs;}
 	public int getProtein() {return this.protein;}
+	
+	//setters
+	public void setUser(User user) {this.user=user;}
 }
