@@ -13,6 +13,8 @@ public class User {
 	
 	@OneToMany(mappedBy="user", orphanRemoval=true)
 	private List<Recipe> recipes = new ArrayList<Recipe>();
+
+   
 	
 	String username;
 	String password;
@@ -52,6 +54,7 @@ public class User {
 		}
 		return this.recipes;
 	}
+	
 	
 
 }

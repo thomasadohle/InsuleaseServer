@@ -8,8 +8,8 @@ import javax.persistence.*;
 public class Provider extends User{
 
 	
-	@OneToMany(mappedBy="provider")
-	List<Patient> patients = new ArrayList<>();
+	@ManyToMany(mappedBy="providerList")
+	private List<Patient> patientList = new ArrayList<>();
 	
 	private String credentials;
 	private String phone;
@@ -30,7 +30,7 @@ public class Provider extends User{
 	public String getCity() {return this.city;}
 	public String getState() {return this.state;}
 	public int getZip() {return this.zip;}
-	public List<Patient> getPatients() {return this.patients;}
+	public List<Patient> getPatients() {return this.patientList;}
 	
 	//Setters
 	public void setCredentials(String credentials) {
@@ -44,15 +44,15 @@ public class Provider extends User{
 	
 	//Add/remove patients
 	public List<Patient> addPatient(Patient patient) {
-		this.patients.add(patient);
-		return this.patients;
+		this.patientList.add(patient);
+		return this.patientList;
 	}
 	public List<Patient> removePatient(Patient patient) {
-		for (Patient p : this.patients) {
+		for (Patient p : this.patientList) {
 			if (p.getUserId() == patient.getUserId()) {
-				this.patients.remove(p);
+				this.patientList.remove(p);
 			}
 		}
-		return this.patients;
+		return this.patientList;
 	}
 }

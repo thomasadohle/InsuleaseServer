@@ -23,6 +23,9 @@ public class Patient extends User{
 	@OneToMany(mappedBy="patient")
 	private List<InsulinDose> insulinDoses = new ArrayList<>();
 	
+    @ManyToMany(mappedBy = "patientList")
+    private List<Provider> providerList = new ArrayList<>();
+	
 	//Default constructor
 	public Patient() {super();}
 
@@ -32,6 +35,7 @@ public class Patient extends User{
 	public Provider getProvider() {return this.provider;}
 	public Regiment getRegiment() {return this.regiment;}
 	public List<InsulinDose> getInsulinDoses() {return this.insulinDoses;}
+	public List<Provider> getProviders(){return this.providerList;}
 	
 	//Setters
 	public Date setDob(Date dob) {this.dob = dob; return this.dob;}
@@ -57,6 +61,20 @@ public class Patient extends User{
 			}
 		}
 		return this.insulinDoses;
+	}
+	
+	//Edit Providers
+	public List<Provider> addProvider(Provider provider) {
+		this.providerList.add(provider);
+		return this.providerList;
+	}
+	public List<Provider> removeProvider(Provider provider) {
+		for (Provider p : this.providerList) {
+			if (p.getUserId() == provider.getUserId()) {
+				this.providerList.remove(p);
+			}
+		}
+		return this.providerList;
 	}
 	
 	
