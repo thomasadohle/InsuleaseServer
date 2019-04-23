@@ -17,7 +17,7 @@ import com.example.InsuleaseServer.Repositories.RecipeRepository;
 import com.example.InsuleaseServer.Repositories.UserRepository;
 
 
-@CrossOrigin(origins = {"http://localhost:4200", "http://insulease.herokuapp.com/"}, allowCredentials = "true", allowedHeaders = "*")
+@CrossOrigin(origins = {"http://localhost:4200", "http://insulease.herokuapp.com/", "http://intense-journey-85451.herokuapp.com/"}, allowCredentials = "true", allowedHeaders = "*")
 @RestController
 public class RecipeService {
 	@Autowired 

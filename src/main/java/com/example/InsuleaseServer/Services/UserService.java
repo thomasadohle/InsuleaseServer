@@ -16,7 +16,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 
-@CrossOrigin(origins = {"http://localhost:4200", "http://insulease.herokuapp.com/"}, allowCredentials = "true", allowedHeaders = "*")
+@CrossOrigin(origins = {"http://localhost:4200", "http://insulease.herokuapp.com/", "http://intense-journey-85451.herokuapp.com/"}, allowCredentials = "true", allowedHeaders = "*")
 @RestController
 public class UserService {
 	
