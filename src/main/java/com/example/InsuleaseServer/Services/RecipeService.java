@@ -17,7 +17,7 @@ import com.example.InsuleaseServer.Repositories.RecipeRepository;
 import com.example.InsuleaseServer.Repositories.UserRepository;
 
 
-@CrossOrigin(origins = {"*"}, allowCredentials = "true", allowedHeaders = "*")
+@CrossOrigin(origins = "*", allowCredentials = "true", allowedHeaders = "*")
 @RestController
 public class RecipeService {
 	@Autowired 

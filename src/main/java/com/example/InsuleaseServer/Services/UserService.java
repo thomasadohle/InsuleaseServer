@@ -16,7 +16,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 
-@CrossOrigin(origins = {"*"}, allowCredentials = "true", allowedHeaders = "*")
+@CrossOrigin(origins = "*", allowCredentials = "true", allowedHeaders = "*")
 @RestController
 public class UserService {
 	

@@ -12,7 +12,7 @@ import com.example.InsuleaseServer.Models.Provider;
 import com.example.InsuleaseServer.Repositories.ProviderRepository;
 
 
-@CrossOrigin(origins = {"*"}, allowCredentials = "true", allowedHeaders = "*")
+@CrossOrigin(origins = "*", allowCredentials = "true", allowedHeaders = "*")
 @RestController
 public class ProviderService {
 	@Autowired

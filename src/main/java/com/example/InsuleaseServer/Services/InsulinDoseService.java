@@ -19,7 +19,7 @@ import com.example.InsuleaseServer.Repositories.UserRepository;
  
 
 
-@CrossOrigin(origins = {"*"}, allowCredentials = "true", allowedHeaders = "*")
+@CrossOrigin(origins = "*", allowCredentials = "true", allowedHeaders = "*")
 @RestController
 public class InsulinDoseService {
 	@Autowired
