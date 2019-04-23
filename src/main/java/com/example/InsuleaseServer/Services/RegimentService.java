@@ -15,8 +15,8 @@ import com.example.InsuleaseServer.Repositories.RegimentRepository;
 import com.example.InsuleaseServer.Repositories.UserRepository;
 
 
-@CrossOrigin(origins = "*", allowCredentials = "true", allowedHeaders = "*")
 @RestController
+@CrossOrigin(origins = "*")
 public class RegimentService {
 	@Autowired
 	PatientRepository patientRepository;

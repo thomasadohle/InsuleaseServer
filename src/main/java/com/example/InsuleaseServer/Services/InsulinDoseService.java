@@ -19,8 +19,8 @@ import com.example.InsuleaseServer.Repositories.UserRepository;
  
 
 
-@CrossOrigin(origins = "*", allowCredentials = "true", allowedHeaders = "*")
 @RestController
+@CrossOrigin(origins = "*")
 public class InsulinDoseService {
 	@Autowired
 	UserRepository userRepository;
