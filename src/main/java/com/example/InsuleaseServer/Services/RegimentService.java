@@ -15,7 +15,7 @@ import com.example.InsuleaseServer.Repositories.RegimentRepository;
 import com.example.InsuleaseServer.Repositories.UserRepository;
 
 
-@CrossOrigin(origins = {"http://localhost:4200", "http://insulease.herokuapp.com/", "http://intense-journey-85451.herokuapp.com/"}, allowCredentials = "true", allowedHeaders = "*")
+@CrossOrigin(origins = {"*"}, allowCredentials = "true", allowedHeaders = "*")
 @RestController
 public class RegimentService {
 	@Autowired
