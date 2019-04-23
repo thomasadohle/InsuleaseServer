@@ -54,8 +54,8 @@ public class PatientService {
 		providerRepository.save(provider);
 	}
 	
-	@GetMapping("/api/patient/{patId}/provider")
-	public List<Provider> findPatientsForProvider(@PathVariable("patId") int patId) {
+	@GetMapping("api/patient/{patId}/provider")
+	public List<Provider> findProvidersForPatients(@PathVariable("patId") int patId) {
 		Patient patient = patientRepository.findById(patId).get();
 		return patient.getProviderList();
 	}

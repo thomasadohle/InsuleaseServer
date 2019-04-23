@@ -40,7 +40,7 @@ public class ProviderService {
 	}
 	
 	@PostMapping("api/patient/{patId}/provider/{proId}")
-	public void addPatientToProvider(@PathVariable("proId") int proId, 
+	public void addProviderToPatient(@PathVariable("proId") int proId, 
 			@PathVariable("patId") int patId) {
 		Patient patient = patientRepository.findById(patId).get();
 		Provider provider = providerRepository.findById(proId).get();
@@ -48,7 +48,7 @@ public class ProviderService {
 		patientRepository.save(patient);
 	}
 	
-	@GetMapping("/api/provider/{proId}/patient")
+	@GetMapping("api/provider/{proId}/patient")
 	public List<Patient> findPatientsForProvider(@PathVariable("proId") int proId) {
 		Provider provider = providerRepository.findById(proId).get();
 		return provider.getPatientList();
