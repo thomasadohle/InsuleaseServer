@@ -11,8 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.InsuleaseServer.Models.Provider;
 import com.example.InsuleaseServer.Repositories.ProviderRepository;
 
-@CrossOrigin(allowCredentials="true")
 @RestController
+@CrossOrigin(origins = {"http://localhost:4200", "http://insulease.herokuapp.com/"}, allowCredentials = "true", allowedHeaders = "*")
+
 public class ProviderService {
 	@Autowired
 	ProviderRepository providerRepository;

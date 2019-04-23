@@ -16,9 +16,10 @@ import com.example.InsuleaseServer.Models.Patient;
 import com.example.InsuleaseServer.Repositories.InsulinDoseRepository;
 import com.example.InsuleaseServer.Repositories.PatientRepository;
 import com.example.InsuleaseServer.Repositories.UserRepository;
+ 
 
-@CrossOrigin(allowCredentials="true")
 @RestController
+@CrossOrigin(origins = {"http://localhost:4200", "http://insulease.herokuapp.com/"}, allowCredentials = "true", allowedHeaders = "*")
 public class InsulinDoseService {
 	@Autowired
 	UserRepository userRepository;

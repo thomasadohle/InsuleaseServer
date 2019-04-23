@@ -11,14 +11,29 @@ public class Regiment {
 
 	
 	private float a1c;
-	private int dayTarget;
-	private int nightTarget;
-	private int dayCorrection;
-	private int nightCorrection;
+	
+	private int breakfastTarget;
+	private int lunchTarget;
+	private int dinnerTarget;
+	private int bedtimeTarget;
+	private int overnightTarget;
+	
+	
+	private int breakfastCorrection;
+	private int lunchCorrection;
+	private int dinnerCorrection;
+	private int bedtimeCorrection;
+	private int overnightCorrection;
+
+	
+	
 	private float breakfastRatio;
 	private float lunchRatio;
 	private float dinnerRatio;
 	private float bedRatio;
+	private float overnightRatio;
+	
+	
 	private String basalInsulin;
 	private String bolusInsulin;
 	
@@ -32,45 +47,180 @@ public class Regiment {
 	 */
 	public Regiment set(Regiment r) {
 		this.a1c = r.getA1c();
-		this.dayTarget = r.getDayTarget();
-		this.nightTarget = r.getNightTarget();
-		this.dayCorrection = r.getDayCorrection();
-		this.nightCorrection = r.getNightCorrection();
+		this.breakfastTarget = r.getBreakfastTarget();
+		this.lunchTarget = r.getLunchTarget();
+		this.dinnerTarget = r.getDinnerTarget();
+		this.bedtimeTarget = r.getBedtimeTarget();
+		this.overnightTarget = r.getOvernightTarget();
+		
+		this.breakfastCorrection = r.getBreakfastCorrection();
+		this.lunchCorrection = r.getLunchCorrection();
+		this.breakfastCorrection = r.getDinnerCorrection();
+		this.lunchCorrection = r.getBedtimeCorrection();
+		this.breakfastCorrection = r.getOvernightCorrection();
+		
 		this.breakfastRatio = r.getBreakfastRatio();
 		this.lunchRatio = r.getLunchRatio();
 		this.dinnerRatio = r.getDinnerRatio();
 		this.bedRatio = r.getLunchRatio();
+		
 		this.basalInsulin = r.getBasalInsulin();
 		this.bolusInsulin = r.getBolusInsulin();
 		return this;
 	}
+
+	public int getRegimentId() {
+		return regimentId;
+	}
+
+	public void setRegimentId(int regimentId) {
+		this.regimentId = regimentId;
+	}
+
+	public float getA1c() {
+		return a1c;
+	}
+
+	public void setA1c(float a1c) {
+		this.a1c = a1c;
+	}
+
+	public int getBreakfastTarget() {
+		return breakfastTarget;
+	}
+
+	public void setBreakfastTarget(int breakfastTarget) {
+		this.breakfastTarget = breakfastTarget;
+	}
+
+	public int getLunchTarget() {
+		return lunchTarget;
+	}
+
+	public void setLunchTarget(int lunchTarget) {
+		this.lunchTarget = lunchTarget;
+	}
+
+	public int getDinnerTarget() {
+		return dinnerTarget;
+	}
+
+	public void setDinnerTarget(int dinnerTarget) {
+		this.dinnerTarget = dinnerTarget;
+	}
+
+	public int getBedtimeTarget() {
+		return bedtimeTarget;
+	}
+
+	public void setBedtimeTarget(int bedtimeTarget) {
+		this.bedtimeTarget = bedtimeTarget;
+	}
+
+	public int getOvernightTarget() {
+		return overnightTarget;
+	}
+
+	public void setOvernightTarget(int overnightTarget) {
+		this.overnightTarget = overnightTarget;
+	}
+
+	public int getBreakfastCorrection() {
+		return breakfastCorrection;
+	}
+
+	public void setBreakfastCorrection(int breakfastCorrection) {
+		this.breakfastCorrection = breakfastCorrection;
+	}
+
+	public int getLunchCorrection() {
+		return lunchCorrection;
+	}
+
+	public void setLunchCorrection(int lunchCorrection) {
+		this.lunchCorrection = lunchCorrection;
+	}
+
+	public int getDinnerCorrection() {
+		return dinnerCorrection;
+	}
+
+	public void setDinnerCorrection(int dinnerCorrection) {
+		this.dinnerCorrection = dinnerCorrection;
+	}
+
+	public int getBedtimeCorrection() {
+		return bedtimeCorrection;
+	}
+
+	public void setBedtimeCorrection(int bedtimeCorrection) {
+		this.bedtimeCorrection = bedtimeCorrection;
+	}
+
+	public int getOvernightCorrection() {
+		return overnightCorrection;
+	}
+
+	public void setOvernightCorrection(int overnightCorrection) {
+		this.overnightCorrection = overnightCorrection;
+	}
+
+	public float getBreakfastRatio() {
+		return breakfastRatio;
+	}
+
+	public void setBreakfastRatio(float breakfastRatio) {
+		this.breakfastRatio = breakfastRatio;
+	}
+
+	public float getLunchRatio() {
+		return lunchRatio;
+	}
+
+	public void setLunchRatio(float lunchRatio) {
+		this.lunchRatio = lunchRatio;
+	}
+
+	public float getDinnerRatio() {
+		return dinnerRatio;
+	}
+
+	public void setDinnerRatio(float dinnerRatio) {
+		this.dinnerRatio = dinnerRatio;
+	}
+
+	public float getBedRatio() {
+		return bedRatio;
+	}
+
+	public void setBedRatio(float bedRatio) {
+		this.bedRatio = bedRatio;
+	}
+
+	public float getOvernightRatio() {
+		return overnightRatio;
+	}
+
+	public void setOvernightRatio(float overnightRatio) {
+		this.overnightRatio = overnightRatio;
+	}
+
+	public String getBasalInsulin() {
+		return basalInsulin;
+	}
+
+	public void setBasalInsulin(String basalInsulin) {
+		this.basalInsulin = basalInsulin;
+	}
+
+	public String getBolusInsulin() {
+		return bolusInsulin;
+	}
+
+	public void setBolusInsulin(String bolusInsulin) {
+		this.bolusInsulin = bolusInsulin;
+	}
 	
-	//getters
-	public int getRegimentId() {return this.regimentId;}
-	
-	public float getA1c() {return this.a1c;}
-	public int getDayTarget() {return this.dayTarget;}
-	public int getNightTarget() {return this.nightTarget;}
-	public int getDayCorrection() {return this.dayCorrection;}
-	public int getNightCorrection() {return this.nightCorrection;}
-	public float getBreakfastRatio() {return this.breakfastRatio;}
-	public float getLunchRatio() {return this.lunchRatio;}
-	public float getDinnerRatio() {return this.dinnerRatio;}
-	public float getBedRatio() {return this.bedRatio;}
-	public String getBasalInsulin() {return this.basalInsulin;}
-	public String getBolusInsulin() {return this.bolusInsulin;}
-	
-	//setters
-	public void setA1c (float a1c) {this.a1c = a1c;}
-	public void setDayTarget(int target) {this.dayTarget = target;}
-	public void setNightTarget(int target) {this.nightTarget = target;}
-	public void setDayCorrection (int cor) {this.dayCorrection = cor;}
-	public void setNightCorrection(int cor) {this.nightCorrection = cor;}
-	public void setBreakfastRatio(float br) {this.breakfastRatio = br;}
-	public void setLunchRatio(float lr) {this.lunchRatio = lr;}
-	public void setDinnerRatio (float dr) {this.dinnerRatio = dr;}
-	public void setBedRatio (float br) {this.bedRatio = br;}
-	public void setBasalInsulin (String b) {this.basalInsulin = b;}
-	public void setBolusInsulin (String b) {this.bolusInsulin = b;}
+
 
 }
