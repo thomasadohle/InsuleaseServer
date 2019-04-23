@@ -4,12 +4,18 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Provider extends User{
 
 	
-	@ManyToMany(mappedBy="providerList")
-	private List<Patient> patientList = new ArrayList<>();
+	@ManyToMany
+	@JoinTable(name="relationship",
+	joinColumns= @JoinColumn(name="provider_id", referencedColumnName="userId"),
+	inverseJoinColumns=@JoinColumn(name="patient_id", referencedColumnName="userId"))
+	@JsonIgnore
+	private List<Patient> patientList;
 	
 	private String credentials;
 	private String phone;
@@ -21,18 +27,24 @@ public class Provider extends User{
 	//Default constructor
 	public Provider() {
 		super();
+		this.patientList = new ArrayList<>();
 	}
-	
+
 	//getters
+	public List<Patient> getPatientList() {
+		return patientList;
+	}
 	public String getCredentials() {return this.credentials;}
 	public String getPhone() {return this.phone;}
 	public String getStreet() {return this.street;}
 	public String getCity() {return this.city;}
 	public String getState() {return this.state;}
 	public int getZip() {return this.zip;}
-	public List<Patient> getPatients() {return this.patientList;}
 	
 	//Setters
+	public void setPatientList(List<Patient> patientList) {
+		this.patientList = patientList;
+	}
 	public void setCredentials(String credentials) {
 		this.credentials = credentials;
 	}
@@ -43,16 +55,10 @@ public class Provider extends User{
 	public void setZip(int zip) {this.zip=zip;}
 	
 	//Add/remove patients
-	public List<Patient> addPatient(Patient patient) {
+	public void addPatient(Patient patient) {
 		this.patientList.add(patient);
-		return this.patientList;
-	}
-	public List<Patient> removePatient(Patient patient) {
-		for (Patient p : this.patientList) {
-			if (p.getUserId() == patient.getUserId()) {
-				this.patientList.remove(p);
-			}
+		if(!patient.getProviderList().contains(this)) {
+			patient.getProviderList().add(this);
 		}
-		return this.patientList;
 	}
 }

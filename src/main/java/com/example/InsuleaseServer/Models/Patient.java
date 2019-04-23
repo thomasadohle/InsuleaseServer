@@ -13,24 +13,23 @@ public class Patient extends User {
 	@Temporal(TemporalType.DATE)
 	private java.util.Date dob;
 
-	@ManyToOne()
-	@JsonIgnore
-	private Provider provider;
-
 	private int diagnosisAge;
 
 	@OneToOne()
 	private Regiment regiment;
 
 	@OneToMany(mappedBy = "patient")
-	private List<InsulinDose> insulinDoses = new ArrayList<>();
+	private List<InsulinDose> insulinDoses;
 
 	@ManyToMany(mappedBy = "patientList")
-	private List<Provider> providerList = new ArrayList<>();
+	@JsonIgnore
+	private List<Provider> providerList;
 
 	// Default constructor
 	public Patient() {
 		super();
+		this.insulinDoses = new ArrayList<>();
+		this.providerList = new ArrayList<>();
 	}
 
 	// Getters
@@ -42,16 +41,16 @@ public class Patient extends User {
 		return this.diagnosisAge;
 	}
 
-	public Provider getProvider() {
-		return this.provider;
-	}
-
 	public Regiment getRegiment() {
 		return this.regiment;
 	}
 
 	public List<InsulinDose> getInsulinDoses() {
 		return this.insulinDoses;
+	}
+
+	public void setInsulinDoses(List<InsulinDose> insulinDoses) {
+		this.insulinDoses = insulinDoses;
 	}
 
 	public List<Provider> getProviders() {
@@ -69,44 +68,32 @@ public class Patient extends User {
 		return this.diagnosisAge;
 	}
 
-	public Provider setProvider(Provider provider) {
-		this.provider = provider;
-		return this.provider;
-	}
-
 	public Regiment setRegiment(Regiment regiment) {
 		this.regiment = regiment;
 		return this.regiment;
 	}
-
-	// update insulin doses
-	public List<InsulinDose> addInsulinDose(InsulinDose dose) {
-		this.insulinDoses.add(dose);
-		return this.insulinDoses;
+	
+	public List<Provider> getProviderList() {
+		return providerList;
 	}
 
-	public List<InsulinDose> removeInsulinDose(InsulinDose dose) {
-		for (InsulinDose d : this.insulinDoses) {
-			if (d.getDoseId() == dose.getDoseId()) {
-				this.insulinDoses.remove(d);
-			}
+	public void setProviderList(List<Provider> providerList) {
+		this.providerList = providerList;
+	}
+
+	// update insulin doses
+	public void addInsulinDose(InsulinDose dose) {
+		this.insulinDoses.add(dose);
+		if(dose.getPatient() != this){
+			dose.setPatient(this);
 		}
-		return this.insulinDoses;
 	}
 
 	// Edit Providers
-	public List<Provider> addProvider(Provider provider) {
+	public void addProvider(Provider provider) {
 		this.providerList.add(provider);
-		return this.providerList;
-	}
-
-	public List<Provider> removeProvider(Provider provider) {
-		for (Provider p : this.providerList) {
-			if (p.getUserId() == provider.getUserId()) {
-				this.providerList.remove(p);
-			}
+		if(!provider.getPatientList().contains(this)) {
+			provider.getPatientList().add(this);
 		}
-		return this.providerList;
 	}
-
 }

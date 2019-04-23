@@ -1,5 +1,7 @@
 package com.example.InsuleaseServer.Services;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +13,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.InsuleaseServer.Models.Patient;
+import com.example.InsuleaseServer.Models.Provider;
 import com.example.InsuleaseServer.Models.Regiment;
 import com.example.InsuleaseServer.Models.User;
 import com.example.InsuleaseServer.Repositories.PatientRepository;
+import com.example.InsuleaseServer.Repositories.ProviderRepository;
 import com.example.InsuleaseServer.Repositories.UserRepository;
 
 
@@ -22,6 +26,9 @@ import com.example.InsuleaseServer.Repositories.UserRepository;
 public class PatientService {
 	@Autowired
 	PatientRepository patientRepository;
+	
+	@Autowired
+	ProviderRepository providerRepository;
 	
 	@Autowired
 	UserRepository userRepository;
@@ -38,6 +45,20 @@ public class PatientService {
 		return newPatient;
 	}
 	
+	@PostMapping("api/provider/{proId}/patient/{patId}")
+	public void addPatientToProvider(@PathVariable("proId") int proId, 
+			@PathVariable("patId") int patId) {
+		Patient patient = patientRepository.findById(patId).get();
+		Provider provider = providerRepository.findById(proId).get();
+		provider.addPatient(patient);
+		providerRepository.save(provider);
+	}
+	
+	@GetMapping("/api/patient/{patId}/provider")
+	public List<Provider> findPatientsForProvider(@PathVariable("patId") int patId) {
+		Patient patient = patientRepository.findById(patId).get();
+		return patient.getProviderList();
+	}
 
 
 }

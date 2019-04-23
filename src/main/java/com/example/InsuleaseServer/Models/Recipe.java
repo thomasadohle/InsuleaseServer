@@ -26,6 +26,9 @@ public class Recipe {
 	
 	//getters
 	public int getRecipeId() {return this.recipeId;}
+	public User getUser() {
+		return user;
+	}
 	public String getLabel() {return this.label;}
 	public String getImage() {return this.image;}
 	public String getShareAs() {return this.shareAs;}
@@ -34,5 +37,37 @@ public class Recipe {
 	public int getProtein() {return this.protein;}
 	
 	//setters
-	public void setUser(User user) {this.user=user;}
+	public void setUser(User user) {
+		this.user=user;
+		if(!user.getRecipes().contains(this)) {
+			user.getRecipes().add(this);
+		}
+	}
+	public void setRecipeId(int recipeId) {
+		this.recipeId = recipeId;
+	}
+
+	public void setLabel(String label) {
+		this.label = label;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	public void setShareAs(String shareAs) {
+		this.shareAs = shareAs;
+	}
+
+	public void setCalories(int calories) {
+		this.calories = calories;
+	}
+
+	public void setCarbs(int carbs) {
+		this.carbs = carbs;
+	}
+
+	public void setProtein(int protein) {
+		this.protein = protein;
+	}
 }

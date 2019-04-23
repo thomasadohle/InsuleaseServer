@@ -61,6 +61,9 @@ public class InsulinDose {
 
 	public void setPatient(Patient patient) {
 		this.patient = patient;
+		if(!patient.getInsulinDoses().contains(this)) {
+			patient.getInsulinDoses().add(this);
+		}
 	}
 
 	public Date getDoseDate() {

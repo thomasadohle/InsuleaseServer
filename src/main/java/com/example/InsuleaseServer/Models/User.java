@@ -11,8 +11,8 @@ public class User {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int userId;
 	
-	@OneToMany(mappedBy="user", orphanRemoval=true)
-	private List<Recipe> recipes = new ArrayList<Recipe>();
+	@OneToMany(mappedBy="user")
+	private List<Recipe> recipes;
 
    
 	
@@ -24,7 +24,9 @@ public class User {
 	/**
 	 * Default Constructor
 	 */
-	public User() {}
+	public User() {
+		this.recipes = new ArrayList<Recipe>();
+	}
 	
 	//Getters
 	public int getUserId() {return this.userId;}
@@ -35,6 +37,13 @@ public class User {
 	public String getLastName() {return this.lastName;}
 	
 	//Setters
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
+	public void setRecipes(List<Recipe> recipes) {
+		this.recipes = recipes;
+	}
 	public void setUsername(String username) {this.username=username;}
 	public void setPassword(String password) {this.password = password;}
 	public void setFirstName(String firstName) {this.firstName = firstName;}
@@ -42,19 +51,10 @@ public class User {
 	
 	
 	//Edit Recipes
-	public List<Recipe> addRecipe(Recipe recipe) {
+	public void addRecipe(Recipe recipe) {
 		this.recipes.add(recipe);
-		return this.recipes;
-	}
-	public List<Recipe> removeRecipe(Recipe recipe) {
-		for (Recipe r : this.recipes) {
-			if (r.getRecipeId() == recipe.getRecipeId()) {
-				this.recipes.remove(r);
-			}
+		if(recipe.getUser() != this) {
+			recipe.setUser(this);
 		}
-		return this.recipes;
 	}
-	
-	
-
 }
