@@ -30,7 +30,7 @@ public class Regiment {
 	private float breakfastRatio;
 	private float lunchRatio;
 	private float dinnerRatio;
-	private float bedRatio;
+	private float bedtimeRatio;
 	private float overnightRatio;
 	
 	
@@ -55,14 +55,15 @@ public class Regiment {
 		
 		this.breakfastCorrection = r.getBreakfastCorrection();
 		this.lunchCorrection = r.getLunchCorrection();
-		this.breakfastCorrection = r.getDinnerCorrection();
-		this.lunchCorrection = r.getBedtimeCorrection();
-		this.breakfastCorrection = r.getOvernightCorrection();
+		this.dinnerCorrection = r.getDinnerCorrection();
+		this.bedtimeCorrection = r.getBedtimeCorrection();
+		this.overnightCorrection = r.getOvernightCorrection();
 		
 		this.breakfastRatio = r.getBreakfastRatio();
 		this.lunchRatio = r.getLunchRatio();
 		this.dinnerRatio = r.getDinnerRatio();
-		this.bedRatio = r.getLunchRatio();
+		this.bedtimeRatio = r.getBedtimeRatio();
+		this.overnightRatio = r.getOvernightRatio();
 		
 		this.basalInsulin = r.getBasalInsulin();
 		this.bolusInsulin = r.getBolusInsulin();
@@ -189,12 +190,12 @@ public class Regiment {
 		this.dinnerRatio = dinnerRatio;
 	}
 
-	public float getBedRatio() {
-		return bedRatio;
+	public float getBedtimeRatio() {
+		return bedtimeRatio;
 	}
 
 	public void setBedRatio(float bedRatio) {
-		this.bedRatio = bedRatio;
+		this.bedtimeRatio = bedRatio;
 	}
 
 	public float getOvernightRatio() {

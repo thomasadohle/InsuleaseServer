@@ -1,4 +1,5 @@
 package com.example.InsuleaseServer.Models;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,9 +8,8 @@ import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class Provider extends User{
+public class Provider extends User {
 
-	
 	@ManyToMany
 	@JoinTable(name="relationship",
 	joinColumns= @JoinColumn(name="provider_id", referencedColumnName="userId"),
@@ -23,8 +23,8 @@ public class Provider extends User{
 	private String city;
 	private String state;
 	private int zip;
-	
-	//Default constructor
+
+	// Default constructor
 	public Provider() {
 		super();
 		this.patientList = new ArrayList<>();
