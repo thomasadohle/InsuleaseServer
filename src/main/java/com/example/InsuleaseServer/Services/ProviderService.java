@@ -19,7 +19,7 @@ import com.example.InsuleaseServer.Repositories.ProviderRepository;
 
 
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = {"http://localhost:4200", "https://insulease.herokuapp.com"}, allowCredentials = "true")
 public class ProviderService {
 	@Autowired
 	ProviderRepository providerRepository;
