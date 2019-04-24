@@ -27,14 +27,14 @@ public class RecipeService {
 	RecipeRepository recipeRepository;
 	
 	@GetMapping("api/user/{userId}/recipe")
-	public List<Recipe> findAllRecipes(@PathVariable(value="userId") int userId){
+	public List<Recipe> findAllRecipesForUser(@PathVariable(value="userId") int userId){
 		System.out.println("userId sent is: " + userId);
 		List<Recipe> recipes = recipeRepository.findRecipesByUser(userId);
 		return recipes;
 	}
 	
 	@GetMapping("api/user/{userId}/recipe/{limit}")
-	public List<Recipe> findAllRecipesLimit(@PathVariable(value="userId") int userId,
+	public List<Recipe> findAllRecipesForUserLimit(@PathVariable(value="userId") int userId,
 			@PathVariable(value="limit") int limit){
 		List<Recipe> recipes = recipeRepository.findRecipesByUserLimited(userId,limit);
 		return recipes;
@@ -53,6 +53,12 @@ public class RecipeService {
 	@DeleteMapping("api/recipe/{recipeId}")
 	public void deleteRecipe(@PathVariable(value="recipeId") int recipeId) {
 		recipeRepository.deleteById(recipeId);
+	}
+	
+	@GetMapping("api/recipe/{limit}")
+	public List<Recipe> findAllRecipesLimit(@PathVariable(value="limit") int limit){
+		List<Recipe> recipes = recipeRepository.findRecipesLimited(limit);
+		return recipes;
 	}
 
 }

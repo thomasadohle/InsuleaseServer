@@ -16,5 +16,9 @@ public interface RecipeRepository extends CrudRepository<Recipe, Integer> {
 	@Query(value="SELECT * FROM recipe WHERE user_user_id=:userId ORDER BY recipe_id DESC LIMIT :limit",
 			nativeQuery=true)
 	public List<Recipe> findRecipesByUserLimited(@Param("userId")int userId, @Param("limit") int limit);
+	
+	@Query(value="SELECT * FROM recipe ORDER BY recipe_id DESC LIMIT :limit",
+			nativeQuery=true)
+	public List<Recipe> findRecipesLimited(@Param("limit") int limit);
 
 }
